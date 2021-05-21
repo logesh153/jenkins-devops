@@ -1,21 +1,15 @@
 pipeline {
-	agent { label 'logesh153/Mycode' docker 'nginx:1.19.10'  }
-	stages	{
-		stage('Build") {
-			steps {
-				sh 'nginx -v'
-				echo "Build"
-			}
-		}
-		stage('Test') {
-			steps {
-				echo "Test"
-			}
-		}
-		stage('Integration Test') {
-			steps {
-				echo "Integration Test"
-			}
-		}
-	}
+    agent {
+        docker {
+            image 'maven:3.8.1-adoptopenjdk-11' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+    }
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'mvn -B -DskipTests clean package' 
+            }
+        }
+    }
 }
