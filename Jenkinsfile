@@ -1,9 +1,9 @@
 pipeline {
-	agent { label 'Mycode' docker 'maven:3.6.3'  }
+	agent { label 'Mycode' docker 'nginx:1.19.10'  }
 	stages	{
 		stage('Build") {
 			steps {
-				sh 'mvn --version'
+				sh 'nginx -v'
 				echo "Build"
 			}
 		}
