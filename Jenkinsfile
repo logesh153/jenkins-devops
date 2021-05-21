@@ -1,12 +1,21 @@
 pipeline {
-	agent { label 'my-pipe' docker 'nginx:1.19.10' }
-	stages {
-             stage ('Build') {
-		steps {
-			sh 'nginx -v'
-		 	echo "Build"
+	agent { docker { image 'maven:3.6.3'}  }
+	stages	{
+		stage('Build") {
+			steps {
+				sh 'mvn --version'
+				echo "Build"
+			}
 		}
-	     }
-       }
+		stage('Test') {
+			steps {
+				echo "Test"
+			}
+		}
+		stage('Integration Test') {
+			steps {
+				echo "Integration Test"
+			}
+		}
+	}
 }
-
