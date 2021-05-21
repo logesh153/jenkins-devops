@@ -1,5 +1,5 @@
 pipeline {
-	agent { label 'Mycode' docker 'nginx:1.19.10'  }
+	agent { label 'logesh153/Mycode' docker 'nginx:1.19.10'  }
 	stages	{
 		stage('Build") {
 			steps {
